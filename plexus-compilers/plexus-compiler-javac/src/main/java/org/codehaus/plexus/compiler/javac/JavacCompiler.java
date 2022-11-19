@@ -66,6 +66,7 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -836,11 +837,11 @@ public class JavacCompiler
             if ( ( getLogger() != null ) && getLogger().isDebugEnabled() )
             {
                 tempFile =
-                    File.createTempFile( JavacCompiler.class.getName(), "arguments", new File( outputDirectory ) );
+                    Files.createTempFile( new File( outputDirectory ).toPath(), JavacCompiler.class.getName(), "arguments" ).toFile();
             }
             else
             {
-                tempFile = File.createTempFile( JavacCompiler.class.getName(), "arguments" );
+                tempFile = Files.createTempFile( JavacCompiler.class.getName(), "arguments" ).toFile();
                 tempFile.deleteOnExit();
             }
 

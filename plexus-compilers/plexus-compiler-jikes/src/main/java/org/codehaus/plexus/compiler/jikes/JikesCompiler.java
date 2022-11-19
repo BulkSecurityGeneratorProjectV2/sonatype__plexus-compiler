@@ -94,6 +94,7 @@ import java.io.FileFilter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -279,7 +280,7 @@ public class JikesCompiler
 
             try
             {
-                File tempFile = File.createTempFile( "compList", ".cmp" );
+                File tempFile = Files.createTempFile( "compList", ".cmp" ).toFile();
                 tempFileName = tempFile.getAbsolutePath();
                 getLogger().debug( "create TempFile" + tempFileName );
 
